@@ -261,7 +261,7 @@ img, svg { max-width: 100%; }
 }
 .hero h1 .destaque { color: var(--dourado-claro); }
 
-.hero-lead { font-size: large; line-height: normal; text-align: justify; }
+.hero-lead { font-size: large; line-height: 1.2; text-align: justify; }
 
 /* Linha fina sob "À partir de R$ 98,48": mais larga que o texto e esvaindo nas pontas. */
 .hero h1 .preco-linha {
@@ -724,7 +724,7 @@ img, svg { max-width: 100%; }
   .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 8px; width: min(560px, 92%); }
   .hero-copy { order: 1; padding-top: 6%; }
   .hero-logo { order: 2; margin-bottom: 14px; }
-  .hero-logo img { width: clamp(240px, 90vw, 470px); max-width: 100%; max-height: none; margin: 0 auto; }
+  .hero-logo img { width: clamp(240px, 75vw, 470px); max-width: 100%; max-height: none; margin: 0 auto; }
   .cards-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
   .como-grid { grid-template-columns: 1fr; gap: 34px; }
   .como-media { order: -1; max-width: 520px; margin: 0 auto; }
