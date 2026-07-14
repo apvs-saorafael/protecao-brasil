@@ -744,7 +744,7 @@ img, svg { max-width: 100%; }
 
 @media (max-width: 640px) {
   .section { padding: 54px 0; }
-  .nav-logo img { height: 72px; margin: -20px 0; }
+  .nav-logo img { height: 90px; margin: -20px 0; }
   .hero { min-height: 0; padding: 75px 0 64px; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .apvs-grid { grid-template-columns: 1fr; }
