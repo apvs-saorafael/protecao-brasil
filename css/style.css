@@ -286,6 +286,7 @@ img, svg { max-width: 100%; }
 }
 
 .hero-lead { font-size: large; line-height: 1.2; text-align: justify; }
+.hero-cobertura { padding-top: 18px; font-size: 1rem; line-height: 1.25; color: rgba(255,255,255,0.9); }
 
 /* Linha fina sob "À partir de R$ 98,48": mais larga que o texto e esvaindo nas pontas. */
 .hero h1 .preco-linha {
@@ -804,10 +805,18 @@ img, svg { max-width: 100%; }
 @media (max-width: 640px) {
   .section { padding: 54px 0; }
   .nav-logo img { height: 90px; margin: -20px 0; }
-  .hero { min-height: 0; padding: 75px 0 64px; }
-  .hero h1 { font-size: 12vw; line-height: 0.8; }  /* "Seguro Auto" grande */
+  /* Hero ocupa a tela inteira no celular, sem cortar conteúdo */
+  .hero { min-height: 100svh; padding: 66px 0 18px; align-items: center; }
+  .hero-inner { gap: 4px; align-content: center; }
+  .hero-copy { padding-top: 0; }
+  .hero h1 { font-size: 12vw; line-height: 0.9; margin-bottom: 6px; }  /* "Seguro Auto" grande */
   .hero h1 .sem-susto { font-size: 13.5vw; line-height: 0.95; display: inline-block; }  /* bem maior que as linhas de cima */
-  .hero-logo img { width: 100%; max-width: 100%; }  /* caminhão preenchendo quase toda a largura */
+  .hero h1 .preco-linha { padding-bottom: 10px; }
+  .hero-lead { font-size: .9rem; line-height: 1.25; }
+  .hero-cobertura { padding-top: 10px; font-size: .82rem; line-height: 1.2; justify-content: center; display: flex;}
+  /* caminhão grande, mas com altura limitada para caber tudo na tela */
+  .hero-logo img { width: 100%; max-width: 100%; max-height: 36vh; object-fit: contain; }
+  .hero-scroll { display: none; }  /* libera espaço no rodapé do hero */
   .form-row { grid-template-columns: 1fr; gap: 0; }
   /* APVS em 3 colunas compactas no celular */
   .apvs-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 30px; }
