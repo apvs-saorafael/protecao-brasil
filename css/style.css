@@ -805,8 +805,8 @@ img, svg { max-width: 100%; }
   .section { padding: 54px 0; }
   .nav-logo img { height: 90px; margin: -20px 0; }
   .hero { min-height: 0; padding: 75px 0 64px; }
-  .hero h1 { font-size: 14vw; line-height: 0.8; }  /* "Seguro Auto" grande */
-  .hero h1 .sem-susto { font-size: 16.5vw; line-height: 0.95; display: inline-block; }  /* bem maior que as linhas de cima */
+  .hero h1 { font-size: 12vw; line-height: 0.8; }  /* "Seguro Auto" grande */
+  .hero h1 .sem-susto { font-size: 13.5vw; line-height: 0.95; display: inline-block; }  /* bem maior que as linhas de cima */
   .hero-logo img { width: 100%; max-width: 100%; }  /* caminhão preenchendo quase toda a largura */
   .form-row { grid-template-columns: 1fr; gap: 0; }
   /* APVS em 3 colunas compactas no celular */
