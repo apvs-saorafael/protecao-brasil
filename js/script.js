@@ -123,6 +123,40 @@
     form.reset();
   });
 
+  /* ---------- Depoimentos: carrossel com bolinhas ---------- */
+  (function () {
+    var track = document.querySelector('.depo-grid');
+    var dotsWrap = document.querySelector('.depo-dots');
+    if (!track || !dotsWrap) return;
+    var cards = track.querySelectorAll('.depo-card');
+    if (cards.length < 2) return;
+
+    var dots = [];
+    cards.forEach(function (card, i) {
+      var d = document.createElement('button');
+      d.type = 'button';
+      d.setAttribute('aria-label', 'Ver depoimento ' + (i + 1));
+      if (i === 0) d.classList.add('is-active');
+      d.addEventListener('click', function () {
+        track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+      });
+      dotsWrap.appendChild(d);
+      dots.push(d);
+    });
+
+    var ativo = 0;
+    function atualizar() {
+      var passo = cards[1].offsetLeft - cards[0].offsetLeft; /* largura do card + gap */
+      var i = Math.max(0, Math.min(cards.length - 1, Math.round(track.scrollLeft / passo)));
+      if (i !== ativo && dots[i]) {
+        dots[ativo].classList.remove('is-active');
+        dots[i].classList.add('is-active');
+        ativo = i;
+      }
+    }
+    track.addEventListener('scroll', atualizar, { passive: true });
+  })();
+
   /* ---------- Depoimentos: carrega o vídeo do YouTube só ao clicar ---------- */
   document.querySelectorAll('.yt-facade').forEach(function (facade) {
     facade.addEventListener('click', function () {

@@ -261,6 +261,16 @@ img, svg { max-width: 100%; }
 }
 .hero h1 .destaque { color: var(--dourado-claro); }
 
+/* "sem susto." — degradê prateado esvaindo para o azul do fundo (como na arte) */
+.hero h1 .sem-susto {
+  background: linear-gradient(100deg, #f2f5fa 0%, #cfd9e9 38%, #93a9d2 72%, #5f7fc0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: none;
+}
+
 .hero-lead { font-size: large; line-height: 1.2; text-align: justify; }
 
 /* Linha fina sob "À partir de R$ 98,48": mais larga que o texto e esvaindo nas pontas. */
@@ -526,9 +536,39 @@ img, svg { max-width: 100%; }
 .como-media { border-radius: var(--raio); overflow: hidden; box-shadow: var(--sombra); }
 .como-media img { display: block; width: 100%; height: auto; }
 
-/* ---------- Depoimentos (grade de vídeos 16:9) ---------- */
+/* ---------- Depoimentos (carrossel de vídeos 16:9) ---------- */
 
-.depo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.depo-grid {
+  display: flex;
+  gap: 26px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 4px 18px;
+  scrollbar-width: none;
+}
+.depo-grid::-webkit-scrollbar { display: none; }
+.depo-grid .depo-card {
+  flex: 0 0 calc((100% - 52px) / 3);   /* 3 cards por vista no desktop */
+  scroll-snap-align: start;
+}
+
+.depo-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+.depo-dots button {
+  width: 9px; height: 9px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 25, 148, 0.25);
+  cursor: pointer;
+  transition: background .2s ease, width .2s ease;
+}
+.depo-dots button.is-active { background: var(--dourado); width: 22px; border-radius: 6px; }
 .depo-card {
   background: var(--branco); border: 1px solid var(--borda); border-radius: 18px;
   overflow: hidden; box-shadow: var(--sombra); display: flex; flex-direction: column;
@@ -732,8 +772,12 @@ img, svg { max-width: 100%; }
   .form-card { order: 1; }         /* formulário primeiro: ação principal no celular */
   .cotacao-aside { order: 2; }     /* selo de confiança logo abaixo */
   .form-group input, .form-group select { font-size: 16px; } /* anti-zoom iOS (tablets tb) */
-  .depo-grid { grid-template-columns: repeat(2, 1fr); }
-  .apvs-grid { grid-template-columns: 1fr; max-width: 460px; margin: 44px auto 0; }
+  .depo-grid .depo-card { flex-basis: calc((100% - 26px) / 2); }  /* 2 por vista */
+  .apvs-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .apvs-card { padding: 16px 10px; gap: 12px; }
+  .apvs-selo { padding: 16px 10px; }
+  .apvs-selo img { height: 72px; }
+  .apvs-card h3 { font-size: .95rem; }
   .diferenciais-grid { grid-template-columns: 1fr 1fr; }
 }
 
@@ -747,9 +791,14 @@ img, svg { max-width: 100%; }
   .nav-logo img { height: 90px; margin: -20px 0; }
   .hero { min-height: 0; padding: 75px 0 64px; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
-  .apvs-grid { grid-template-columns: 1fr; }
+  /* APVS em 3 colunas compactas no celular */
+  .apvs-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 30px; }
+  .apvs-card { padding: 12px 6px; gap: 10px; border-radius: 14px; }
+  .apvs-selo { padding: 12px 8px; border-radius: 10px; }
+  .apvs-selo img { height: 52px; }
+  .apvs-card h3 { font-size: .72rem; letter-spacing: .01em; }
   .diferenciais-grid { grid-template-columns: 1fr; }
-  .depo-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+  .depo-grid .depo-card { flex-basis: 88%; }  /* 1 por vista, com espiada no próximo */
   .partner { min-height: 120px; }
   .partner img { max-height: 70px; }
   .footer-grid { grid-template-columns: 1fr; }
